@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="item"
+            type="com.soft_sales.model.ProductModel" />
+        <variable
+            name="lang"
+            type="String" />
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        android:minHeight="56dp"
+        android:gravity="center_vertical"
+        >
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text='@{lang.equals("ar")?(item.title_ar+"\n"+item.invoiceCrossModel.product_amount+"X"+item.invoiceCrossModel.product_price):(item.title_en.isEmpty()?(item.title_ar+"\n"+item.invoiceCrossModel.product_amount+"X"+item.invoiceCrossModel.product_price):(item.title_en+"\n"+item.invoiceCrossModel.product_amount+"X"+item.invoiceCrossModel.product_price))}'
+                />
+
+        </FrameLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text='@{(item.invoiceCrossModel.product_price*item.invoiceCrossModel.product_amount)+" "+@string/sar}'
+            />
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.soft_sales">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <queries>
+        <package android:name="woyou.aidlservice.jiuiv5" />
+    </queries>
+
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="true" />
+
+    <application
+        android:name="com.soft_sales.share.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup"
+        tools:targetApi="q">
+        <activity
+            android:name=".uis.activity_create_return_invoice.CreateReturnInvoiceActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+
+            android:exported="false" />
+        <activity
+            android:name=".uis.activity_print_invoice.PrintInvoiceActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false" />
+        <activity
+            android:name=".uis.activity_sales_invoices.SalesInvoicesActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false" />
+        <activity
+            android:name=".uis.activity_create_sales_invoice.CreateSalesInvoiceActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false" />
+        <activity
+            android:name=".uis.activity_add_product.AddProductActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false" />
+        <activity
+            android:name=".uis.activity_base_url.BaseUrlActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false" />
+        <activity
+            android:name="com.soft_sales.uis.activity_login.LoginActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.soft_sales.uis.activity_home.HomeActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.soft_sales.uis.activity_splash.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <service
+            android:name=".database.LoadCategoryService"
+            android:exported="false"
+            android:stopWithTask="false" />
+        <service
+            android:name=".database.LoadProductsService"
+            android:exported="false"
+            android:stopWithTask="false" />
+        <service
+            android:name=".database.LoadSalesInvoiceService"
+            android:exported="false"
+            android:stopWithTask="false" />
+        <service
+            android:name=".database.UploadProductService"
+            android:exported="false"
+            android:stopWithTask="false" />
+        <service
+            android:name=".database.UploadInvoiceService"
+            android:exported="false"
+            android:stopWithTask="false" />
+        <service
+            android:name=".database.UploadSingleInvoiceService"
+            android:exported="false"
+            android:stopWithTask="false" />
+
+        <service
+            android:name=".database.UploadSingleReturnInvoiceService"
+            android:exported="false"
+            android:stopWithTask="false" />
+
+        <service
+            android:name=".database.AppSyncService"
+            android:exported="false"
+            android:stopWithTask="false" />
+
+
+
+        <receiver android:name=".broad_cast_receiver.BroadCastCancelCategoryNotification" />
+        <receiver android:name=".broad_cast_receiver.BroadCastCancelProductsNotification" />
+        <receiver android:name=".broad_cast_receiver.BroadCastCancelSalesInvoicesNotification" />
+        <receiver android:name=".broad_cast_receiver.BroadCastCancelProductNotification" />
+        <receiver android:name=".broad_cast_receiver.BroadCastCancelInvoiceNotification" />
+        <receiver android:name=".broad_cast_receiver.BroadCastCancelSingleInvoiceNotification" />
+        <receiver android:name=".broad_cast_receiver.BroadCastCancelSingleReturnInvoiceNotification"/>
+        <receiver android:name=".broad_cast_receiver.BroadCastCancelSyncNotification"/>
+        <receiver android:name=".broad_cast_receiver.AlarmReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.soft_sales.provider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/photo_provider" />
+        </provider>
+    </application>
+
+</manifest>

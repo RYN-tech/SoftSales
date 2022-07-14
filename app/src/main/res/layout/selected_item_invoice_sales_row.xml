@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="lang"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.soft_sales.model.ProductModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="@drawable/rounded_empty_stroke"
+
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp">
+
+            <ImageView
+                local_image="@{model.local_image}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:text="@{String.valueOf(model.amount)}"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:background="@drawable/small_rounded_enabled_btn"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewDelete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="3dp"
+                app:cardBackgroundColor="@color/cancel"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="1dp"
+                android:layout_gravity="end"
+                >
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_delete" />
+            </androidx.cardview.widget.CardView>
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="2"
+            android:text='@{lang.equals("ar")?model.title_ar:model.title_en}'
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:text="@{model.price}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="8dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:text="@string/sar"
+                android:textColor="@color/grey4"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

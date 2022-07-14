@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.soft_sales.model.BaseUrlModel" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".uis.activity_base_url.BaseUrlActivity"
+        android:fillViewport="true"
+        >
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           >
+           <TextView
+               android:id="@+id/url"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@color/black"
+               android:textSize="16sp"
+               android:fontFamily="@font/ar_font"
+               android:layout_marginStart="16dp"
+               android:layout_marginEnd="16dp"
+               android:text="@string/enter_base_url_here"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               android:layout_marginTop="16dp"
+
+               />
+           <EditText
+               android:id="@+id/baseUrl"
+               android:layout_width="match_parent"
+               android:layout_height="56dp"
+               app:layout_constraintTop_toBottomOf="@id/url"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               android:layout_margin="16dp"
+               android:lines="1"
+               android:inputType="textUri"
+               android:background="@drawable/small_stroke_grey1"
+               android:paddingStart="16dp"
+               android:paddingEnd="16dp"
+               android:hint="@string/base_url"
+               android:textColorHint="@color/gray5"
+               android:textSize="14sp"
+               android:textColor="@color/black"
+               android:text="@={model.baseUrl}"
+
+               />
+
+           <Button
+               android:id="@+id/btnSave"
+               android:layout_width="match_parent"
+               android:layout_height="56dp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/baseUrl"
+               app:layout_constraintVertical_bias="1"
+               android:background="@drawable/small_rounded_enabled_btn"
+               android:textColor="@color/white"
+               android:textSize="18sp"
+               android:fontFamily="@font/ar_font"
+               android:text="@string/save"
+               android:enabled="@{model.valid,default=false}"
+
+               />
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

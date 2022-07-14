@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="title"
+            type="String" />
+
+    </data>
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:text="@{title}"
+        android:lines="1"
+        android:ellipsize="end"
+
+        />
+</layout>

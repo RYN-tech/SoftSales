@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/dialog_alert_bg.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/dialog_window_bg.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_add_photo.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_arabic.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_arrow_down.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_back_arrow.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_box.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_box_checked.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_box_unchecked.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_camera.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_close2.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_delete.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_done.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_edit2.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_english.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_images.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_increment.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_inv.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_lock.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_more.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_price.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_search.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_upload_image.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/ic_user.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/line_horz.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/rounded_empty_stroke.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/rounded_gradient.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/rounded_grey10.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/rounded_top.xml" value="0.2125" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/rounded_top_primary.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/selected_category.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/selected_product.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/small_rounded_enabled_ntn.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/small_rounded_gradient.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/small_rounded_stroke_cancel.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/small_rounded_stroke_primary.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/small_stroke_grey1.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/unselected_category.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/drawable/unselected_product.xml" value="0.227" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_add_product.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_base_url.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_create_return_invoice.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_create_sales_invoice.xml" value="0.2" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_print_invoice.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_sales_invoices.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/bottom_sheet_fragment_sales_invoice.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/bottom_sheet_fragment_sales_invoice_item.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/bottom_sheet_pricing_invoice.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/category_row.xml" value="0.21979166666666666" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/dialog_choose_image.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/dialog_discount_error.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/dialog_discount_layout.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/invoice_row.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/invoice_sales_print_row.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/product_row.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/product_sales_return_row.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/rounded_gradient.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/selected_item_invoice_sales_row.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/spinner_row.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/layout/toolbar.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/menu/popup_menu1.xml" value="1.325" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/menu/popup_menu2.xml" value="0.22083333333333333" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/works/Courses/work_android/FreeLancer/soft_sales/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

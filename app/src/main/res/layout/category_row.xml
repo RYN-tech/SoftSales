@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="model"
+            type="com.soft_sales.model.CategoryWithProducts" />
+        <variable
+            name="lang"
+            type="String" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        app:cardCornerRadius="24dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="3dp"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="@{model.categoryModel.selected?@drawable/selected_category:@drawable/unselected_category}"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@{model.categoryModel.selected?@color/white:@color/colorPrimary}"
+                android:textSize="14sp"
+                android:text='@{lang.equals("ar")?model.categoryModel.title_ar:model.categoryModel.title_en}'
+                android:lines="1"
+                android:maxEms="8"
+                android:ellipsize="end"
+                android:fontFamily="@font/ar_font"
+
+                />
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

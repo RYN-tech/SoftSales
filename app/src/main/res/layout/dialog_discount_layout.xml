@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="discount"
+            type="String" />
+        <variable
+            name="enable"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="@string/add_discount"
+                />
+            <androidx.legacy.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+            <ImageView
+                android:id="@+id/imageClose"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_close2"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_empty_stroke"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            >
+            <EditText
+                android:id="@+id/edtDiscount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:lines="1"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/grey4"
+                android:hint="@string/hint_price"
+                android:text="@{discount}"
+                />
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_grey8"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/grey4"
+                android:text="@string/sar"
+
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/small_rounded_enabled_btn"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="@string/confirm"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/ar_font"
+            android:enabled="@{enable,default=false}"
+            />
+
+    </LinearLayout>
+</layout>

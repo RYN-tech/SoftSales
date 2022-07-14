@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.soft_sales.model.LoginModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true"
+        android:scrollbars="none"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/logo"
+                    app:layout_constraintDimensionRatio="1:.67"
+                    android:scaleType="centerCrop"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:text="@string/welcome"
+                android:textStyle="bold"
+
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_user"
+                app:startIconTint="@color/colorPrimary"
+                app:hintEnabled="false"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="@drawable/small_stroke_grey1"
+                    android:textColor="@color/black"
+                    android:hint="@string/user_name"
+                    android:lines="1"
+                    android:textColorHint="@color/gray5"
+                    android:textSize="14sp"
+                    android:text="@={model.userName}"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_lock"
+                app:startIconTint="@color/colorPrimary"
+                app:hintEnabled="false"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorPrimary"
+
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="@drawable/small_stroke_grey1"
+                    android:textColor="@color/black"
+                    android:hint="@string/password"
+                    android:lines="1"
+                    android:textColorHint="@color/gray5"
+                    android:inputType="textPassword"
+                    android:textSize="14sp"
+                    android:text="@={model.password}"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="36dp"
+                android:background="@drawable/small_rounded_enabled_btn"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="@string/login"
+                android:enabled="@{model.valid,default=false}"
+                />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="lang"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.soft_sales.model.UserModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:openDrawer="start">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:id="@+id/llData"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.appbar.AppBarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        >
+
+                        <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/toolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="48dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/home"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintHorizontal_bias=".35"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.appcompat.widget.Toolbar>
+                    </com.google.android.material.appbar.AppBarLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="48dp"
+                        android:layout_marginEnd="8dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/createSalesInvoice"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:cardElevation="3dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="8dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/createReturnInvoice"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="3dp"
+                            app:contentPadding="16dp"
+                            >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                >
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/ic_invoice"
+                                    app:tint="@color/colorPrimary"
+                                    />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:text="@string/create_sale_invoice"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/createReturnInvoice"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:cardElevation="3dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="8dp"
+                            app:layout_constraintStart_toEndOf="@id/createSalesInvoice"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="3dp"
+                            app:contentPadding="16dp"
+                            >
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                >
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/ic_returned_invoice"
+                                    app:tint="@color/colorPrimary"
+                                    />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:text="@string/create_return_invoice"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginEnd="8dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/addProduct"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:cardElevation="3dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="8dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/syncData"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="3dp"
+                            app:contentPadding="16dp"
+                            >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                >
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/ic_add"
+                                    app:tint="@color/colorPrimary"
+                                    />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:text="@string/add_product"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/syncData"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:cardElevation="3dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="8dp"
+                            app:layout_constraintStart_toEndOf="@id/addProduct"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="3dp"
+                            app:contentPadding="16dp"
+                            >
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                >
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/ic_sync"
+                                    app:tint="@color/colorPrimary"
+                                    />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:text="@string/sync_data"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSync"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:focusable="true"
+                    >
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.3"
+                        android:background="@drawable/small_rounded_gradient"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            >
+
+                            <FrameLayout
+                                android:layout_width="130dp"
+                                android:layout_height="130dp"
+                                >
+
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_width="90dp"
+                                    android:layout_height="90dp"
+                                    android:layout_gravity="center"
+                                    android:src="@color/white"
+                                    />
+
+                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    app:cpb_background_progressbar_color="@color/gray3"
+                                    app:cpb_background_progressbar_width="5dp"
+                                    app:cpb_indeterminate_mode="true"
+                                    app:cpb_progressbar_width="5dp"
+                                    app:cpb_progressbar_color="@color/colorPrimaryDark"
+                                    app:cpb_round_border="true"
+                                    app:cpb_start_angle="90"
+                                    android:layout_gravity="center"
+                                    />
+
+                                <ImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_sync"
+                                    app:tint="@color/colorPrimaryDark"
+                                    android:padding="12dp"
+
+                                    />
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                android:gravity="center"
+                                android:text="@string/synchronization_in_progress"
+                                android:textStyle="bold"
+
+                                />
+
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".7"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/black"
+                                android:text="@string/you_can_wait_till_synchronization_n_or_n"
+                                android:gravity="center"
+                                />
+                            <Button
+                                android:id="@+id/background"
+                                android:layout_width="200dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/small_rounded_stroke_primary"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="18sp"
+                                android:text="@string/background"
+                                android:layout_marginTop="5dp"
+                                />
+                        </LinearLayout>
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/navView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+
+                >
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="176dp"
+                            android:background="@color/colorPrimary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_margin="16dp"
+                                android:orientation="vertical">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    local_image="@{model.data.setting.imageBitmap}"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:src="@drawable/avatar"
+                                    app:civ_circle_background_color="@color/white"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:maxLines="2"
+                                    android:text="@{model.data.user.name}"
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llSalesInvoice"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_invoice"
+                                app:tint="@color/colorPrimary" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/ar_font"
+                                android:lines="1"
+                                android:text="@string/sales_invoices"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:rotation='@{lang.equals("ar")?180:0}'
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_language"
+                                app:tint="@color/colorPrimary" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/ar_font"
+                                android:lines="1"
+                                android:text="@string/ch_language"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/language"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:ellipsize="end"
+                                android:fontFamily="@font/ar_font"
+                                android:lines="1"
+                                android:text='@{lang.equals("ar")?"English":"العربية"}'
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llLogout"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_logout"
+                                app:tint="@color/colorPrimary" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/ar_font"
+                                android:lines="1"
+                                android:text="@string/logout"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:rotation='@{lang.equals("ar")?180:0}'
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/colorPrimary"
+
+                                />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+            </com.google.android.material.navigation.NavigationView>
+        </androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>
+
