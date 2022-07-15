@@ -11,6 +11,7 @@ import com.soft_sales.databinding.ActivityLoginBinding;
 import com.soft_sales.model.LoginModel;
 import com.soft_sales.mvvm.ActivityLoginMvvm;
 import com.soft_sales.uis.activity_base.BaseActivity;
+import com.soft_sales.uis.activity_base_url.BaseUrlActivity;
 import com.soft_sales.uis.activity_home.HomeActivity;
 
 public class LoginActivity extends BaseActivity {
@@ -40,6 +41,12 @@ public class LoginActivity extends BaseActivity {
 
         binding.btnLogin.setOnClickListener(view -> {
             mvvm.Login(this,model,getLang());
+        });
+
+        binding.changeUrl.setOnClickListener(view -> {
+            Intent intent = new Intent(this, BaseUrlActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
         });
 
     }

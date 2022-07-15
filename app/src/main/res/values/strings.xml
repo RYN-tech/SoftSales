@@ -136,6 +136,7 @@
     <string name="all_invoices">All invoices</string>
     <string name="sync_invoices">Sync invoices</string>
     <string name="unsync_invoices">UnSync invoices</string>
+    <string name="change_app_domain">Change App Domain</string>
 
 
 </resources>

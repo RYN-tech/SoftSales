@@ -25,13 +25,18 @@ public class BaseUrlActivity extends BaseActivity {
         model = new BaseUrlModel();
         binding.setModel(model);
 
+        if (getBaseUrl()!=null){
+            model.setBaseUrl(getBaseUrl());
+        }
+
         binding.btnSave.setOnClickListener(view -> {
             String url = model.getBaseUrl();
             if (!url.endsWith("/")){
                 url = url+"/";
             }
             setBaseUrl(url);
-            navigateToLoginActivity();
+            setResult(RESULT_OK);
+            finish();
         });
 
     }

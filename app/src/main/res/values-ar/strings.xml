@@ -136,5 +136,6 @@
     <string name="all_invoices">جميع الفواتير</string>
     <string name="sync_invoices">المتزامنة</string>
     <string name="unsync_invoices">الغير متزامنة</string>
+    <string name="change_app_domain">تغيير نطاق التطبيق</string>
 
 </resources>

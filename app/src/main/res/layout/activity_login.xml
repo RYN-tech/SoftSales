@@ -75,7 +75,7 @@
                     android:textColorHint="@color/gray5"
                     android:textSize="14sp"
                     android:text="@={model.userName}"
-
+                    android:fontFamily="@font/ar_font"
                     />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -94,7 +94,6 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:background="@drawable/small_stroke_grey1"
@@ -105,6 +104,9 @@
                     android:inputType="textPassword"
                     android:textSize="14sp"
                     android:text="@={model.password}"
+                    android:fontFamily="@font/ar_font"
+                    android:textAlignment="viewStart"
+
 
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -116,13 +118,50 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="36dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/small_rounded_enabled_btn"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:text="@string/login"
                 android:enabled="@{model.valid,default=false}"
+                android:fontFamily="@font/ar_font"
+
                 />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/changeUrl"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    >
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_url"
+                        app:tint="@color/colorPrimary"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:textColor="@color/colorPrimary"
+                        android:text="@string/change_app_domain"
+                        android:fontFamily="@font/ar_font"
+                        />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
