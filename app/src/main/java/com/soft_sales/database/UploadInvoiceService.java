@@ -178,10 +178,16 @@ public class UploadInvoiceService extends Service {
     private void insertLocalCrossTable() {
         List<InvoiceCrossModel> crossModelList = new ArrayList<>();
         long local_id = invoiceModel.getInvoice_local_id();
+        List<ProductModel> list = new ArrayList<>();
         for (ProductModel model : invoiceModel.getProducts()) {
             InvoiceCrossModel itemsCrossModel = new InvoiceCrossModel(local_id,invoiceModel.getInvoice_online_id(),model.getProduct_local_id(),model.getId(),Double.parseDouble(model.getPrice()),model.getAmount());
+            model.setInvoiceCrossModel(itemsCrossModel);
             crossModelList.add(itemsCrossModel);
+            list.add(model);
+
+
         }
+        invoiceModel.setProducts(list);
 
         dao.insertInvoiceCrossTable(crossModelList)
                 .subscribeOn(Schedulers.computation())

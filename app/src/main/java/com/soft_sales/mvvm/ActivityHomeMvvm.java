@@ -232,6 +232,7 @@ public class ActivityHomeMvvm extends AndroidViewModel {
     }
 
     private void getUnUploadedInvoice(Context context, UserModel userModel) {
+        Log.e("qq","qqq");
         dao.getLocalInvoiceWithProducts("0", true)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -263,6 +264,7 @@ public class ActivityHomeMvvm extends AndroidViewModel {
     }
 
     private void logout(UserModel userModel, Context context) {
+        Log.e("vv","vvv");
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
@@ -284,8 +286,12 @@ public class ActivityHomeMvvm extends AndroidViewModel {
 
                             if (statusResponseResponse.body().getStatus() == 200) {
                              dropCategoryTable(dialog);
-                            }else if (statusResponseResponse.body().getStatus()==406){}
-                            dropCategoryTable(dialog);
+                            }else if (statusResponseResponse.body().getStatus()==406){
+                                dialog.dismiss();
+                            }
+
+
+
                         } else {
                             try {
                                 Log.e("error",statusResponseResponse.errorBody().string());
@@ -305,6 +311,8 @@ public class ActivityHomeMvvm extends AndroidViewModel {
     }
 
     private void dropCategoryTable( ProgressDialog dialog) {
+        Log.e("yy","uuu");
+
         dao.dropCategoryTable()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -329,6 +337,7 @@ public class ActivityHomeMvvm extends AndroidViewModel {
     }
 
     private void dropProductTable( ProgressDialog dialog) {
+        Log.e("tt","yy");
         dao.dropProductTable()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -353,6 +362,7 @@ public class ActivityHomeMvvm extends AndroidViewModel {
     }
 
     private void dropInvoiceTable( ProgressDialog dialog) {
+        Log.e("rr","rr");
         dao.dropInvoiceTable()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -377,6 +387,7 @@ public class ActivityHomeMvvm extends AndroidViewModel {
     }
 
     private void dropInvoiceCrossTable( ProgressDialog dialog) {
+        Log.e("ddd","dd");
         dao.dropInvoiceCrossTable()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -395,7 +406,7 @@ public class ActivityHomeMvvm extends AndroidViewModel {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         getOnLogoutSuccess().setValue(true);
-
+                        Log.e("1","1");
                         Log.e("error", e.getMessage());
                         dialog.dismiss();
 

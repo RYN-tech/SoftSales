@@ -2,16 +2,18 @@ package com.soft_sales.model;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
+@Entity(indices = @Index(value = {"code"},unique = true))
 public class InvoiceModel implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private long invoice_local_id;
     private String invoice_online_id="0";
+
     private int code=0;
     private String customer_name;
     private double total=0;

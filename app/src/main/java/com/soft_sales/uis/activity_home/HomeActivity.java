@@ -71,13 +71,17 @@ public class HomeActivity extends BaseActivity {
         });
 
         mvvm.getOnLogoutSuccess().observe(this, aBoolean -> {
-            AlarmModel alarmModel= new AlarmModel();
-            alarmModel.cancelAlarm(this.getApplicationContext());
-            clearUserModel();
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            startActivity(intent);
-            finish();
+            if (aBoolean){
+                AlarmModel alarmModel= new AlarmModel();
+                alarmModel.cancelAlarm(this.getApplicationContext());
+                clearUserModel();
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
+            }
+
+            Log.e("logged_out",aBoolean+"");
         });
 
         binding.background.setOnClickListener(view -> {

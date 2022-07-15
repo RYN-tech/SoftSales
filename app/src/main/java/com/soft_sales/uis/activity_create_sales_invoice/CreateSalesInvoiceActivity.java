@@ -429,10 +429,8 @@ public class CreateSalesInvoiceActivity extends BaseActivity {
 
     public void deleteItem(ProductModel productModel) {
         binding.cardViewDelete.setVisibility(View.GONE);
-        selectedItemModel = productModel;
         binding.setCounter("0");
         amount = 0;
-        selectedItemModel.setAmount(0);
         mvvm.deleteItem(productModel,getUserModel());
     }
     @Subscribe(threadMode = ThreadMode.MAIN)

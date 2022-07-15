@@ -24,6 +24,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.soft_sales.R;
 import com.soft_sales.broad_cast_receiver.BroadCastCancelCategoryNotification;
+import com.soft_sales.model.AlarmModel;
 import com.soft_sales.model.CategoryDataModel;
 import com.soft_sales.model.CategoryModel;
 import com.soft_sales.model.CreateOnlineInvoice;
@@ -37,6 +38,7 @@ import com.soft_sales.model.SettingDataModel;
 import com.soft_sales.model.SettingModel;
 import com.soft_sales.model.SingleOnlineInvoice;
 import com.soft_sales.model.SingleProductDataModel;
+import com.soft_sales.model.SyncModel;
 import com.soft_sales.model.UserModel;
 import com.soft_sales.preferences.Preferences;
 import com.soft_sales.remote.Api;
@@ -89,25 +91,32 @@ public class AppSyncService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        context = this;
         appDatabase = AppDatabase.getInstance(getApplication());
         dao = appDatabase.getDAO();
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
+        if (NetworkUtils.getConnectivityStatus(context)) {
+            createNotification(getString(R.string.sync_data));
+
+        } else {
+            stopSelf();
+        }
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        context = this;
+
         Log.e("app","sync updated");
-
         if (NetworkUtils.getConnectivityStatus(context)) {
-            createNotification(getString(R.string.sync_data));
-
             getLocalProducts();
         } else {
             stopSelf();
         }
+
+
+
         return START_STICKY;
     }
 
@@ -1058,7 +1067,11 @@ public class AppSyncService extends Service {
                     @Override
                     public void onLoadFailed(@Nullable Drawable errorDrawable) {
                         preferences.createUpdateUserData(context, model);
+                        AlarmModel alarmModel = new AlarmModel();
+                        alarmModel.schedule(context);
                         EventBus.getDefault().post(model);
+                        EventBus.getDefault().post(new SyncModel());
+
                         stopSelf();
 
 
@@ -1073,6 +1086,9 @@ public class AppSyncService extends Service {
                         settingModel.setImageBitmap(outputStream.toByteArray());
                         data.setSetting(settingModel);
                         preferences.createUpdateUserData(context, model);
+                        AlarmModel alarmModel = new AlarmModel();
+                        alarmModel.schedule(context);
+                        EventBus.getDefault().post(new SyncModel());
                         EventBus.getDefault().post(model);
 
                         stopSelf();
@@ -1118,6 +1134,8 @@ public class AppSyncService extends Service {
     public void onDestroy() {
         super.onDestroy();
         disposable.clear();
+        AlarmModel alarmModel = new AlarmModel();
+        alarmModel.schedule(context);
         if (manager != null) {
             manager.cancel(Tags.not_tag_soft_app, Tags.not_soft_app_id);
         }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 
@@ -14,6 +15,7 @@ import com.soft_sales.adapter.InvoiceAdapter;
 import com.soft_sales.databinding.ActivitySalesInvoicesBinding;
 import com.soft_sales.model.EventsModel;
 import com.soft_sales.model.InvoiceModel;
+import com.soft_sales.model.SyncModel;
 import com.soft_sales.mvvm.ActivitySalesInvoiceMvvm;
 import com.soft_sales.uis.activity_base.BaseActivity;
 import com.soft_sales.uis.activity_print_invoice.PrintInvoiceActivity;
@@ -27,6 +29,7 @@ public class SalesInvoicesActivity extends BaseActivity {
     private ActivitySalesInvoicesBinding binding;
     private InvoiceAdapter adapter;
     private String action;
+    private boolean isSyncStarted = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +112,32 @@ public class SalesInvoicesActivity extends BaseActivity {
     public void syncDone(EventsModel model){
        binding.all.setChecked(true);
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void syncDataDone(SyncModel model){
+        isSyncStarted = true;
+        Log.e("isSync",isSyncStarted+"__");
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isSyncStarted){
+            if (binding.all.isChecked()){
+                mvvm.getLocalSalesInvoices(this);
+
+            }else if (binding.unSync.isChecked()){
+                mvvm.getUnSyncSalesInvoices(this);
+
+            }else if (binding.sync.isChecked()){
+                mvvm.getSyncSalesInvoices(this);
+
+            }
+            isSyncStarted= false;
+
+        }
     }
 
     @Override

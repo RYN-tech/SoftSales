@@ -25,7 +25,7 @@ public class AlarmModel implements Serializable {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.add(Calendar.MINUTE,30);
+        calendar.add(Calendar.MINUTE,2);
         calendar.set(Calendar.HOUR_OF_DAY,calendar.get(Calendar.HOUR_OF_DAY));
         calendar.set(Calendar.MINUTE,calendar.get(Calendar.MINUTE));
         calendar.set(Calendar.SECOND,0);
@@ -35,7 +35,7 @@ public class AlarmModel implements Serializable {
             calendar.add(Calendar.DAY_OF_MONTH,1);
         }
 
-        long DAILY = 1000*60*30;
+        long DAILY = 1000*60*2;
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),DAILY,pendingIntent);
 
 
