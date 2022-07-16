@@ -30,6 +30,7 @@ import com.soft_sales.preferences.Preferences;
 import com.soft_sales.remote.Api;
 import com.soft_sales.share.App;
 import com.soft_sales.share.Common;
+import com.soft_sales.share.NetworkUtils;
 import com.soft_sales.tags.Tags;
 
 import org.greenrobot.eventbus.EventBus;
@@ -70,13 +71,19 @@ public class LoadSalesInvoiceService extends Service {
         appDatabase = AppDatabase.getInstance(getApplication());
         dao = appDatabase.getDAO();
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        context = this;
+        createNotification();
+        if (NetworkUtils.getConnectivityStatus(this)){
+            getOnlineInvoices(page);
+        }else {
+            stopSelf();
+        }
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        context = this;
-        createNotification();
-        getOnlineInvoices(page);
+
+
 
         return START_STICKY;
     }
@@ -265,7 +272,7 @@ public class LoadSalesInvoiceService extends Service {
 
     private void createNotification() {
         Intent cancelIntent = new Intent(this, BroadCastCancelSalesInvoicesNotification.class);
-        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_INVOICES);
         builder.setAutoCancel(true);
         builder.setOngoing(true);

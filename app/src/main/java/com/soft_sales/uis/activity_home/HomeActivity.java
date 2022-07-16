@@ -1,6 +1,8 @@
 package com.soft_sales.uis.activity_home;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -13,6 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.soft_sales.broad_cast_receiver.BroadCastNetwork;
 import com.soft_sales.model.AlarmModel;
 import com.soft_sales.model.EventsModel;
 import com.soft_sales.model.UserModel;
@@ -158,7 +161,15 @@ public class HomeActivity extends BaseActivity {
 
         mvvm.getCategories(this);
 
+        if(getUserModel().getData().getUser().getIs_login().equals("0")){
+            mvvm.prepareDataToLogout(this,getUserModel());
+        }
+        registerBroadCast();
 
+    }
+
+    private void registerBroadCast() {
+        registerReceiver(new BroadCastNetwork(),new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
 
@@ -192,6 +203,10 @@ public class HomeActivity extends BaseActivity {
         Log.e("data","user_datasss");
 
         binding.setModel(model);
+
+        if(model.getData().getUser().getIs_login().equals("0")){
+            mvvm.prepareDataToLogout(this,getUserModel());
+        }
     }
 
     @Override

@@ -73,18 +73,21 @@ public class UploadProductService extends Service {
         appDatabase = AppDatabase.getInstance(getApplication());
         dao = appDatabase.getDAO();
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
         context = this;
-        addProductModel = (AddProductModel) intent.getSerializableExtra("data");
+        createNotification();
+
         if (NetworkUtils.getConnectivityStatus(this)){
-            createNotification();
             Toast.makeText(context, context.getString(R.string.uploading), Toast.LENGTH_SHORT).show();
         }
 
         insertProductLocal();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        addProductModel = (AddProductModel) intent.getSerializableExtra("data");
+
         return START_NOT_STICKY;
     }
 
@@ -263,7 +266,7 @@ public class UploadProductService extends Service {
         String body = context.getString(R.string.uploading);
 
         Intent cancelIntent = new Intent(this, BroadCastCancelProductNotification.class);
-        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_PRODUCT);
         builder.setAutoCancel(true);
         builder.setOngoing(true);

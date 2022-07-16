@@ -73,16 +73,19 @@ public class UploadSingleReturnInvoiceService extends Service {
         appDatabase = AppDatabase.getInstance(getApplication());
         dao = appDatabase.getDAO();
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        context = this;
+        createNotification();
 
+        imagePath ="";
+        product_index =0;
+        updateLocalInvoice();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        context = this;
+
         invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
-        imagePath ="";
-        product_index =0;
-        updateLocalInvoice();
+
         return START_STICKY;
     }
 
@@ -106,7 +109,7 @@ public class UploadSingleReturnInvoiceService extends Service {
                     public void onComplete() {
                         Log.e("local_updated","success");
                         if (NetworkUtils.getConnectivityStatus(context)){
-                            createNotification();
+
                             uploadUnUploadedProducts();
                         }else {
                             stopSelf();
@@ -500,7 +503,7 @@ public class UploadSingleReturnInvoiceService extends Service {
         String title = context.getString(R.string.create_return_invoice);
 
         Intent cancelIntent = new Intent(this, BroadCastCancelSingleInvoiceNotification.class);
-        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_SINGLE_RETURN_INViOCE);
         builder.setAutoCancel(true);
         builder.setOngoing(true);

@@ -53,6 +53,7 @@ public class UserModel extends ResponseModel {
             private String email_verified_at;
             private String photo;
             private String lang;
+            private String is_login;
 
 
             public String getId() {
@@ -77,6 +78,10 @@ public class UserModel extends ResponseModel {
 
             public String getLang() {
                 return lang;
+            }
+
+            public String getIs_login() {
+                return is_login;
             }
         }
 

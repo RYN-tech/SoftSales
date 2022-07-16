@@ -287,6 +287,7 @@ public class ActivityHomeMvvm extends AndroidViewModel {
                             if (statusResponseResponse.body().getStatus() == 200) {
                              dropCategoryTable(dialog);
                             }else if (statusResponseResponse.body().getStatus()==406){
+                                dropCategoryTable(dialog);
                                 dialog.dismiss();
                             }
 

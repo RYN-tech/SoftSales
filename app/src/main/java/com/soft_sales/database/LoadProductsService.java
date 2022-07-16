@@ -71,13 +71,20 @@ public class LoadProductsService extends Service {
         appDatabase = AppDatabase.getInstance(getApplication());
         dao = appDatabase.getDAO();
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        context = this;
+        createNotification();
+        if (NetworkUtils.getConnectivityStatus(this)){
+            getOnlineProduct(page);
+
+        }else {
+            stopSelf();
+        }
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        context = this;
-        createNotification();
-        getOnlineProduct(page);
+
+
         return START_STICKY;
     }
 
@@ -264,7 +271,7 @@ public class LoadProductsService extends Service {
 
     private void createNotification() {
         Intent cancelIntent = new Intent(this, BroadCastCancelProductsNotification.class);
-        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_PRODUCTS);
         builder.setAutoCancel(true);
         builder.setOngoing(true);

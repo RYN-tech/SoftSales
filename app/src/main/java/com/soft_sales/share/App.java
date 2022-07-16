@@ -9,6 +9,7 @@ import android.content.Context;
 import androidx.multidex.MultiDexApplication;
 
 import com.soft_sales.language.Language;
+import com.soft_sales.printer_utils.SunmiPrintHelper;
 
 
 public class App extends MultiDexApplication {
@@ -46,7 +47,7 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        SunmiPrintHelper.getInstance().initSunmiPrinterService(this);
         createChannelCategory();
         createChannelProducts();
         createChannelInvoices();
@@ -71,7 +72,7 @@ public class App extends MultiDexApplication {
     private void createChannelProducts() {
         NotificationManager  manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_PRODUCTS, CHANNEL_NAME_PRODUCTS,NotificationManager.IMPORTANCE_LOW);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_PRODUCTS, CHANNEL_NAME_PRODUCTS,NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("soft_app_products_service_channel");
             channel.setShowBadge(false);
             channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
@@ -82,7 +83,7 @@ public class App extends MultiDexApplication {
     private void createChannelInvoices() {
         NotificationManager  manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_INVOICES, CHANNEL_NAME_INVOICES,NotificationManager.IMPORTANCE_LOW);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_INVOICES, CHANNEL_NAME_INVOICES,NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("soft_app_invoices_service_channel");
             channel.setShowBadge(false);
             channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
@@ -93,7 +94,7 @@ public class App extends MultiDexApplication {
     private void createChannelProduct() {
         NotificationManager  manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_PRODUCT, CHANNEL_NAME_PRODUCT,NotificationManager.IMPORTANCE_LOW);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_PRODUCT, CHANNEL_NAME_PRODUCT,NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("soft_app_product_service_channel");
             channel.setShowBadge(false);
             channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
@@ -104,7 +105,7 @@ public class App extends MultiDexApplication {
     private void createChannelInvoice() {
         NotificationManager  manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_INVOICE, CHANNEL_NAME_INVOICE,NotificationManager.IMPORTANCE_LOW);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_INVOICE, CHANNEL_NAME_INVOICE,NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("soft_app_invoice_service_channel");
             channel.setShowBadge(false);
             channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
@@ -117,7 +118,7 @@ public class App extends MultiDexApplication {
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID_SINGLE_INViOCE, CHANNEL_NAME_SINGLE_INVOICE,NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("soft_app_only_invoice_service_channel");
             channel.setShowBadge(false);
-            channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
             manager.createNotificationChannel(channel);
         }
     }
@@ -128,7 +129,7 @@ public class App extends MultiDexApplication {
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID_SINGLE_RETURN_INViOCE, CHANNEL_NAME_SINGLE_RETURN_INVOICE,NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("soft_app_only_return_invoice_service_channel");
             channel.setShowBadge(false);
-            channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
             manager.createNotificationChannel(channel);
         }
     }
@@ -136,10 +137,10 @@ public class App extends MultiDexApplication {
     private void createChannelSyncSoftApp() {
         NotificationManager  manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_SOFT_APP, CHANNEL_NAME_SOFT_APP,NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_SOFT_APP, CHANNEL_NAME_SOFT_APP,NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("soft_app_service_channel");
             channel.setShowBadge(false);
-            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
             manager.createNotificationChannel(channel);
         }
     }

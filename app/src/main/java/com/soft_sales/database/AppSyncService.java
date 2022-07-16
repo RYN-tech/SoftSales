@@ -97,12 +97,8 @@ public class AppSyncService extends Service {
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
-        if (NetworkUtils.getConnectivityStatus(context)) {
-            createNotification(getString(R.string.sync_data));
+        createNotification(getString(R.string.sync_data));
 
-        } else {
-            stopSelf();
-        }
     }
 
     @Override
@@ -1100,7 +1096,7 @@ public class AppSyncService extends Service {
 
     private void createNotification(String content) {
         Intent cancelIntent = new Intent(this, BroadCastCancelCategoryNotification.class);
-        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_SOFT_APP);
         builder.setAutoCancel(false);
         builder.setOngoing(true);
@@ -1108,7 +1104,7 @@ public class AppSyncService extends Service {
         builder.setContentTitle(getString(R.string.sync_data));
         builder.setContentText(content);
         builder.setSmallIcon(R.mipmap.ic_launcher_round);
-        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        builder.setPriority(NotificationCompat.PRIORITY_LOW);
         builder.addAction(0, context.getString(R.string.dismiss), cancelPendingIntent);
         builder.setProgress(100, 100, true);
         builder.setContentText(context.getString(R.string.downloading));
@@ -1116,11 +1112,14 @@ public class AppSyncService extends Service {
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForeground(Tags.not_soft_app_id, builder.build());
+            this.startForeground(Tags.not_soft_app_id, builder.build());
 
         } else {
             manager.notify(Tags.not_tag_soft_app, Tags.not_soft_app_id, builder.build());
 
+        }
+        if (!NetworkUtils.getConnectivityStatus(this)){
+            stopSelf();
         }
     }
 

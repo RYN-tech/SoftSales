@@ -68,22 +68,17 @@ public class UploadInvoiceService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        context = this;
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
         appDatabase = AppDatabase.getInstance(getApplication());
         dao = appDatabase.getDAO();
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        context = this;
-        invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
+        createNotification();
 
         if (NetworkUtils.getConnectivityStatus(this)){
-            createNotification();
             Toast.makeText(context, context.getString(R.string.uploading), Toast.LENGTH_LONG).show();
+
         }
 
         dao.getLastInvoice()
@@ -114,6 +109,18 @@ public class UploadInvoiceService extends Service {
 
                     }
                 });
+
+
+
+
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
+
+
 
 
         return START_STICKY;
@@ -540,7 +547,7 @@ public class UploadInvoiceService extends Service {
         String title = context.getString(R.string.create_sale_invoice);
 
         Intent cancelIntent = new Intent(this, BroadCastCancelInvoiceNotification.class);
-        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_INVOICE);
         builder.setAutoCancel(true);
         builder.setOngoing(true);

@@ -19,9 +19,9 @@ public class AlarmReceiver extends BroadcastReceiver {
         Intent intentService = new Intent(context.getApplicationContext(), AppSyncService.class);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(intentService);
+            context.getApplicationContext().startForegroundService(intentService);
         } else {
-            context.startService(intentService);
+            context.getApplicationContext().startService(intentService);
 
         }
 

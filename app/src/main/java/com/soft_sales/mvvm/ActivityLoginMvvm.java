@@ -98,16 +98,7 @@ public class ActivityLoginMvvm extends AndroidViewModel {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        if (e.getMessage() != null && e.getMessage().contains("Unable to resolve host")) {
-                            Toast.makeText(context, R.string.ch_net_con, Toast.LENGTH_SHORT).show();
-                        } else if (e.getMessage() != null && e.getMessage().contains("timeout")) {
-                            Toast.makeText(context, R.string.ch_net_con, Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                        }
-
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 });

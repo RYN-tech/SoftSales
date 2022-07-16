@@ -60,18 +60,26 @@ public class LoadCategoryService extends Service {
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
+        context = this;
+        createNotification();
+        if (NetworkUtils.getConnectivityStatus(this)){
+            getOnlineCategory(page);
+
+        }else {
+            stopSelf();
+        }
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        context = this;
-        createNotification();
-        getOnlineCategory(page);
+
+
 
         return START_STICKY;
     }
 
     private void getOnlineCategory(int page) {
+
         Log.e("categoryPage",page+"");
         Api.getService(Tags.getBaseUrl(this))
                 .getDepartments(userModel.getData().getAccess_token(),page)
@@ -238,7 +246,7 @@ public class LoadCategoryService extends Service {
 
     private void createNotification() {
         Intent cancelIntent = new Intent(this, BroadCastCancelCategoryNotification.class);
-        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_CATEGORY);
         builder.setAutoCancel(false);
         builder.setOngoing(true);

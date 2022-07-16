@@ -75,25 +75,27 @@ public class UploadSingleInvoiceService extends Service {
         appDatabase = AppDatabase.getInstance(getApplication());
         dao = appDatabase.getDAO();
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
         context = this;
-        invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
-
-
+        createNotification();
         if (NetworkUtils.getConnectivityStatus(context)) {
-            createNotification();
             imagePath ="";
             product_index =0;
             Toast.makeText(context, context.getString(R.string.uploading), Toast.LENGTH_LONG).show();
             uploadUnUploadedProducts();
         } else {
-            Toast.makeText(context, context.getString(R.string.check_network), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.check_network), Toast.LENGTH_LONG).show();
+
             stopSelf();
         }
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
+
+
+
 
         return START_STICKY;
     }
@@ -102,6 +104,7 @@ public class UploadSingleInvoiceService extends Service {
 
 
     private void uploadUnUploadedProducts() {
+
         if (product_index<invoiceModel.getProducts().size()){
             ProductModel productModel = invoiceModel.getProducts().get(product_index);
             if (productModel.getId()!=null&&!productModel.getId().isEmpty()&&!productModel.getId().equals("0")){
@@ -400,7 +403,7 @@ public class UploadSingleInvoiceService extends Service {
         String title = context.getString(R.string.create_sale_invoice);
 
         Intent cancelIntent = new Intent(this, BroadCastCancelSingleInvoiceNotification.class);
-        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_SINGLE_INViOCE);
         builder.setAutoCancel(true);
         builder.setOngoing(true);
