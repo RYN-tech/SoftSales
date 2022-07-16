@@ -77,6 +77,14 @@ public class UploadSingleInvoiceService extends Service {
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         context = this;
         createNotification();
+
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
+
         if (NetworkUtils.getConnectivityStatus(context)) {
             imagePath ="";
             product_index =0;
@@ -87,14 +95,6 @@ public class UploadSingleInvoiceService extends Service {
 
             stopSelf();
         }
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-
-        invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
-
-
 
 
         return START_STICKY;

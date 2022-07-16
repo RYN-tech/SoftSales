@@ -78,13 +78,14 @@ public class UploadSingleReturnInvoiceService extends Service {
 
         imagePath ="";
         product_index =0;
-        updateLocalInvoice();
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
+
+        updateLocalInvoice();
 
         return START_STICKY;
     }

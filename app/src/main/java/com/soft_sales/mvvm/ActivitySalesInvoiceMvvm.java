@@ -1,10 +1,12 @@
 package com.soft_sales.mvvm;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -196,16 +198,30 @@ public class ActivitySalesInvoiceMvvm extends AndroidViewModel {
 
     public void syncInvoice(Context context,InvoiceModel invoiceModel){
 
-        Intent intent = new Intent(context, UploadSingleInvoiceService.class);
-        intent.putExtra("data",invoiceModel);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(intent);
-        } else {
-            context.startService(intent);
+        if (!isMyServiceRunning(context,UploadSingleInvoiceService.class)){
+            Intent intent = new Intent(context, UploadSingleInvoiceService.class);
+            intent.putExtra("data",invoiceModel);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                context.startForegroundService(intent);
+            } else {
+                context.startService(intent);
 
+            }
+        }else {
+            Toast.makeText(context, "Upload service had started", Toast.LENGTH_SHORT).show();
         }
 
 
+
+    }
+    private boolean isMyServiceRunning(Context context,Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

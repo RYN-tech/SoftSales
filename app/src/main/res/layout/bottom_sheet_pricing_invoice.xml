@@ -14,6 +14,9 @@
             name="vat"
             type="String" />
         <variable
+            name="vatValue"
+            type="String" />
+        <variable
             name="totVaT"
             type="String" />
         <variable
@@ -223,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:textColor="@color/grey4"
-                    android:text="@string/vat"
+                    android:text='@{@string/vat+":"+vat+"%"}'
                     android:fontFamily="@font/ar_font"
 
                     />
@@ -239,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textColor="@color/black"
-                    android:text="@{vat}"
+                    android:text="@{vatValue}"
                     android:textStyle="bold"
 
                     />
@@ -252,7 +255,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
                     android:textColor="@color/grey4"
-                    android:text="%"
+                    android:text="@string/sar"
                     android:textStyle="bold"
 
                     />

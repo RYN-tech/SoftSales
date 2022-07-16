@@ -1,5 +1,7 @@
 package com.soft_sales.uis.activity_home;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -16,6 +18,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.soft_sales.broad_cast_receiver.BroadCastNetwork;
+import com.soft_sales.database.AppSyncService;
 import com.soft_sales.model.AlarmModel;
 import com.soft_sales.model.EventsModel;
 import com.soft_sales.model.UserModel;
@@ -164,10 +167,23 @@ public class HomeActivity extends BaseActivity {
         if(getUserModel().getData().getUser().getIs_login().equals("0")){
             mvvm.prepareDataToLogout(this,getUserModel());
         }
-        registerBroadCast();
+
+        if (!isMyServiceRunning(this, AppSyncService.class)){
+            registerBroadCast();
+
+        }
 
     }
 
+    private boolean isMyServiceRunning(Context context, Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
     private void registerBroadCast() {
         registerReceiver(new BroadCastNetwork(),new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
@@ -206,7 +222,14 @@ public class HomeActivity extends BaseActivity {
 
         if(model.getData().getUser().getIs_login().equals("0")){
             mvvm.prepareDataToLogout(this,getUserModel());
+        }else {
+            if (!isMyServiceRunning(this, AppSyncService.class)){
+                registerBroadCast();
+
+            }
         }
+
+
     }
 
     @Override

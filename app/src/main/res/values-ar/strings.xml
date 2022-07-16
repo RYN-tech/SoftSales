@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">سوفت سيلز</string>
+    <string name="app_name">مبيعات سوفت</string>
     <string name="open">فتح</string>
     <string name="close">غلق</string>
     <string name="base_url">رابط التطبيق</string>

@@ -81,6 +81,17 @@ public class UploadInvoiceService extends Service {
 
         }
 
+
+
+
+
+
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
         dao.getLastInvoice()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -109,17 +120,6 @@ public class UploadInvoiceService extends Service {
 
                     }
                 });
-
-
-
-
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-
-        invoiceModel = (InvoiceModel) intent.getSerializableExtra("data");
-
 
 
 

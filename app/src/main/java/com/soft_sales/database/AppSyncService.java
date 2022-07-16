@@ -247,6 +247,7 @@ public class AppSyncService extends Service {
                     });
 
         } else {
+
             getUnUploadedInvoices();
         }
 

@@ -80,14 +80,14 @@ public class UploadProductService extends Service {
             Toast.makeText(context, context.getString(R.string.uploading), Toast.LENGTH_SHORT).show();
         }
 
-        insertProductLocal();
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         addProductModel = (AddProductModel) intent.getSerializableExtra("data");
-
+        insertProductLocal();
         return START_NOT_STICKY;
     }
 

@@ -235,6 +235,8 @@ public class CreateSalesInvoiceActivity extends BaseActivity {
                 } else {
                     binding.bottomSheet.setDiscount(Common.formatPriceFromDoubleToString(mvvm.getDiscount().getValue() != null ? mvvm.getDiscount().getValue() : 0));
                     binding.bottomSheet.setVat(Common.formatPriceFromDoubleToString(mvvm.getVAT().getValue() != null ? mvvm.getVAT().getValue() : 0));
+                    binding.bottomSheet.setVatValue(Common.formatPriceFromDoubleToString(mvvm.getVATValue().getValue() != null ? mvvm.getVATValue().getValue() : 0));
+
                     binding.bottomSheet.setTotQty(mvvm.getTotalQty().getValue() + "");
                     binding.bottomSheet.setTotVaT(Common.formatPriceFromDoubleToString(mvvm.getTotalAfterDiscountVat().getValue() != null ? mvvm.getTotalAfterDiscountVat().getValue() : 0));
                     binding.bottomSheet.setTotBeforeVaT(Common.formatPriceFromDoubleToString(mvvm.getTotalProducts().getValue() != null ? mvvm.getTotalProducts().getValue() : 0));

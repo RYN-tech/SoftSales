@@ -1,5 +1,6 @@
 package com.soft_sales.mvvm;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -191,15 +192,30 @@ public class ActivityHomeMvvm extends AndroidViewModel {
     }
 
     public void syncData(Context context) {
-        Intent intent = new Intent(context, AppSyncService.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(intent);
-        } else {
-            context.startService(intent);
 
+        if (!isMyServiceRunning(context,AppSyncService.class)){
+            Intent intent = new Intent(context, AppSyncService.class);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                context.startForegroundService(intent);
+            } else {
+                context.startService(intent);
+
+            }
+        }else {
+            Toast.makeText(context, "Sync data have started", Toast.LENGTH_SHORT).show();
         }
+
     }
 
+    private boolean isMyServiceRunning(Context context,Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void prepareDataToLogout(Context context, UserModel userModel) {
         dao.getLocalProductsByOnlineId("0")

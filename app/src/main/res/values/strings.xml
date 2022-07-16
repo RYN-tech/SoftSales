@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Soft Sales</string>
+    <string name="app_name">Sooft Sales</string>
     <string name="open">open</string>
     <string name="close">close</string>
-
     <string name="base_url">Base Url</string>
     <string name="save">Save</string>
     <string name="enter_base_url_here">Enter Base Url Here</string>

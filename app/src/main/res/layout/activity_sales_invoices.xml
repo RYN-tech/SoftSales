@@ -26,16 +26,17 @@
                 android:id="@+id/all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/all_invoices"
                 android:checked="true"
+                android:fontFamily="@font/ar_font"
                 />
             <RadioButton
                 android:id="@+id/unSync"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/unsync_invoices"
                 android:checked="true"
@@ -45,7 +46,7 @@
                 android:id="@+id/sync"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/sync_invoices"
                 android:fontFamily="@font/ar_font"
@@ -111,11 +112,7 @@
 
                 />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_more"
-                />
+
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recView"
