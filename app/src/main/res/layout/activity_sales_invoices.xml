@@ -32,21 +32,26 @@
                 android:checked="true"
                 />
             <RadioButton
-                android:id="@+id/sync"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/colorPrimary"
-                android:text="@string/sync_invoices"
-                />
-            <RadioButton
                 android:id="@+id/unSync"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/unsync_invoices"
+                android:checked="true"
+                android:fontFamily="@font/ar_font"
                 />
+            <RadioButton
+                android:id="@+id/sync"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/sync_invoices"
+                android:fontFamily="@font/ar_font"
+
+                />
+
         </RadioGroup>
         <LinearLayout
             android:layout_width="match_parent"

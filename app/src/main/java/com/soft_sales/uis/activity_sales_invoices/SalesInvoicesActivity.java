@@ -89,8 +89,8 @@ public class SalesInvoicesActivity extends BaseActivity {
         if (!EventBus.getDefault().isRegistered(this)){
             EventBus.getDefault().register(this);
         }
-        mvvm.getLocalSalesInvoices(this);
-
+       // mvvm.getLocalSalesInvoices(this);
+        mvvm.getUnSyncSalesInvoices(this);
 
 
     }
@@ -110,8 +110,8 @@ public class SalesInvoicesActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void syncDone(EventsModel model){
-       binding.all.setChecked(true);
-
+      // binding.all.setChecked(true);
+       binding.unSync.setChecked(true);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
