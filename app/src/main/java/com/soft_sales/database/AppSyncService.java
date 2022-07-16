@@ -92,12 +92,6 @@ public class AppSyncService extends Service {
     public void onCreate() {
         super.onCreate();
         context = this;
-     /*   appDatabase = AppDatabase.getInstance(getApplication());
-        dao = appDatabase.getDAO();
-        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        preferences = Preferences.getInstance();
-        userModel = preferences.getUserData(this);
-        createNotification(getString(R.string.sync_data));*/
 
     }
 
