@@ -105,7 +105,7 @@
 
     <string name="pr_address">ADDRESS /</string>
     <string name="pr_receipt_No">Receipt NO/</string>
-    <string name="pr_receipt">Receipt Date/</string>
+    <string name="pr_receipt">Date/</string>
     <string name="pr_tax_no">TAX NO/</string>
     <string name="pr_cust_name">Customer/</string>
     <string name="pr_pay">Payment/</string>
@@ -136,6 +136,8 @@
     <string name="sync_invoices">Sync invoices</string>
     <string name="unsync_invoices">UnSync invoices</string>
     <string name="change_app_domain">Change App Domain</string>
+    <string name="commercial_no">Commercial NO/</string>
+    <string name="cr">CR/</string>
 
 
 </resources>

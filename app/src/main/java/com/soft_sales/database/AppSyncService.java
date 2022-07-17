@@ -24,6 +24,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.soft_sales.R;
 import com.soft_sales.broad_cast_receiver.BroadCastCancelCategoryNotification;
+import com.soft_sales.broad_cast_receiver.BroadCastCancelSyncNotification;
 import com.soft_sales.model.AlarmModel;
 import com.soft_sales.model.CategoryDataModel;
 import com.soft_sales.model.CategoryModel;
@@ -1096,7 +1097,7 @@ public class AppSyncService extends Service {
     }
 
     private void createNotification(String content) {
-        Intent cancelIntent = new Intent(this, BroadCastCancelCategoryNotification.class);
+        Intent cancelIntent = new Intent(this, BroadCastCancelSyncNotification.class);
         PendingIntent cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, App.CHANNEL_ID_SOFT_APP);
         builder.setAutoCancel(false);

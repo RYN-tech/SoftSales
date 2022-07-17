@@ -65,7 +65,7 @@
     <string name="vat">الضريبة</string>
     <string name="total_vat_dis">الاجمالي+الضريبة+الخصم</string>
     <string name="cash">نقدي</string>
-    <string name="mada">مدي</string>
+    <string name="mada">مدى</string>
     <string name="payment_methods">طرق الدفع</string>
     <string name="error">خطأ</string>
     <string name="total">الإجمالي</string>
@@ -114,8 +114,8 @@
     <string name="pr_dis">الخصم/</string>
     <string name="pr_total_before_tax_disc">الإجمالي قبل الضريبة و الخصم/</string>
     <string name="pr_total_tax_dis">الإجمالي+الضريبة+الخصم/</string>
-    <string name="simple_sales_receipt">فاتورة مبيعات ضريبة مبسطة</string>
-    <string name="simple_tax_return_invoice">فاتورة مرتجعات ضريبة مبسطة</string>
+    <string name="simple_sales_receipt">فاتورة ضريبية مبسطة</string>
+    <string name="simple_tax_return_invoice">فاتورة ضريبية مبسطة</string>
     <string name="final_tot">المطلوب تحصيلة/</string>
     <string name="pr_item">العنصر</string>
     <string name="total_before_discount">الإجمالي قبل الخصم</string>
@@ -137,5 +137,7 @@
     <string name="sync_invoices">المتزامنة</string>
     <string name="unsync_invoices">الغير متزامنة</string>
     <string name="change_app_domain">تغيير نطاق التطبيق</string>
+    <string name="commercial_no">السجل التجاري/</string>
+    <string name="cr">س.ت/</string>
 
 </resources>

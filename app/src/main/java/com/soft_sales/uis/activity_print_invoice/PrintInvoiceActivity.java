@@ -26,6 +26,8 @@ import com.soft_sales.R;
 import com.soft_sales.adapter.SalesProductPrintAdapter;
 import com.soft_sales.databinding.ActivityPrintInvoiceBinding;
 import com.soft_sales.model.InvoiceModel;
+import com.soft_sales.printer_utils.BluetoothUtil;
+import com.soft_sales.printer_utils.ESCUtil;
 import com.soft_sales.printer_utils.SunmiPrintHelper;
 import com.soft_sales.printer_utils.ZatcaQRCodeGeneration;
 import com.soft_sales.uis.activity_base.BaseActivity;
@@ -54,6 +56,7 @@ public class PrintInvoiceActivity extends BaseActivity {
     }
 
     private void initView() {
+       initPrinterStyle();
 
         Glide.with(this)
                 .asBitmap()
@@ -78,18 +81,31 @@ public class PrintInvoiceActivity extends BaseActivity {
 
         setUpToolbar(binding.toolbar, "", R.color.white, R.color.black);
         binding.setModel(model);
+        binding.setLang(getLang());
         binding.setUserModel(getUserModel());
         adapter = new SalesProductPrintAdapter(this, getLang());
         adapter.updateList(model.getProducts());
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
         binding.recView.setAdapter(adapter);
 
+        String name = "";
+        if (getLang().equals("ar")){
+            name = getUserModel().getData().getSetting().getName_ar();
+        }else {
+            if (getUserModel().getData().getSetting().getName_en()!=null&&!getUserModel().getData().getSetting().getName_ar().isEmpty()){
+                name = getUserModel().getData().getSetting().getName_en();
+
+            }else {
+                name = getUserModel().getData().getSetting().getName_ar();
+
+            }
+        }
         ZatcaQRCodeGeneration.Builder builder = new ZatcaQRCodeGeneration.Builder();
-        builder.sellerName(getUserModel().getData().getSetting().getName_ar()) // Shawrma House
-                .taxNumber(getUserModel().getData().getSetting().getCommercial_number()) // 1234567890
+        builder.sellerName(name) // Shawrma House
+                .taxNumber(getUserModel().getData().getSetting().getVat()) // 1234567890
                 .invoiceDate(getInvoiceDate()) //..> 22/11/2021 03:00 am
                 .totalAmount(model.getTotal() + "") // 100
-                .taxAmount(model.getTax_per() + "");
+                .taxAmount(model.getTax_value() + "");
 
 
         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
@@ -108,6 +124,10 @@ public class PrintInvoiceActivity extends BaseActivity {
 
     }
 
+    private void initPrinterStyle() {
+        SunmiPrintHelper.getInstance().initPrinter();
+
+    }
 
     private void printApiBitmap() {
         Bitmap bitmap = Bitmap.createBitmap(binding.scrollView.getChildAt(0).getWidth(), binding.scrollView.getChildAt(0).getHeight(), Bitmap.Config.ARGB_8888);
@@ -133,6 +153,7 @@ public class PrintInvoiceActivity extends BaseActivity {
             Matrix matrix = new Matrix();
             matrix.postScale(scaleWidth, 1);
             Bitmap b = Bitmap.createBitmap(newBitmap, 0, 0, width, height, matrix, true);
+            SunmiPrintHelper.getInstance().printBitmap(b, 1);
             SunmiPrintHelper.getInstance().printBitmap(b, 1);
 
 

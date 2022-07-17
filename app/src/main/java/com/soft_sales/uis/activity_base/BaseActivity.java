@@ -42,17 +42,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        initPrinterStyle();
     }
 
-    private void initPrinterStyle() {
-        BluetoothUtil.isBlueToothPrinter =false;
-        if(BluetoothUtil.isBlueToothPrinter){
-            BluetoothUtil.sendData(ESCUtil.init_printer());
-        }else{
-            SunmiPrintHelper.getInstance().initPrinter();
-        }
-    }
+
 
     protected String getLang() {
         Paper.init(this);

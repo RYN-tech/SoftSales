@@ -19,6 +19,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.soft_sales.broad_cast_receiver.BroadCastNetwork;
 import com.soft_sales.database.AppSyncService;
+import com.soft_sales.database.LoadCategoryService;
+import com.soft_sales.database.LoadProductsService;
+import com.soft_sales.database.LoadSalesInvoiceService;
+import com.soft_sales.database.UploadInvoiceService;
+import com.soft_sales.database.UploadProductService;
+import com.soft_sales.database.UploadSingleInvoiceService;
+import com.soft_sales.database.UploadSingleReturnInvoiceService;
 import com.soft_sales.model.AlarmModel;
 import com.soft_sales.model.EventsModel;
 import com.soft_sales.model.UserModel;
@@ -155,7 +162,22 @@ public class HomeActivity extends BaseActivity {
             mvvm.syncData(this);
         });
         binding.llLogout.setOnClickListener(view -> {
-            mvvm.prepareDataToLogout(this,getUserModel());
+            if (!isMyServiceRunning(this,AppSyncService.class)&&
+                    !isMyServiceRunning(this, LoadCategoryService.class)&&
+                    !isMyServiceRunning(this, LoadProductsService.class)&&
+                    !isMyServiceRunning(this, LoadSalesInvoiceService.class)&&
+                    !isMyServiceRunning(this, UploadInvoiceService.class)&&
+                    !isMyServiceRunning(this, UploadProductService.class)&&
+                    !isMyServiceRunning(this, UploadSingleInvoiceService.class)&&
+                    !isMyServiceRunning(this, UploadSingleReturnInvoiceService.class)
+            ){
+                mvvm.prepareDataToLogout(this,getUserModel());
+            }else {
+                Toast.makeText(this, "Please wait App Sync Data", Toast.LENGTH_SHORT).show();
+            }
+
+
+
         });
 
         if (!EventBus.getDefault().isRegistered(this)){
