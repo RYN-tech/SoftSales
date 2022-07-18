@@ -38,6 +38,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateSalesInvoiceActivity extends BaseActivity {
     private ActivityCreateSalesInvoiceMvvm mvvm;
     private ActivityCreateSalesInvoiceBinding binding;
@@ -413,6 +416,17 @@ public class CreateSalesInvoiceActivity extends BaseActivity {
 
 
     public void setSelectedCategory(CategoryWithProducts model) {
+        List<ProductModel> products = new ArrayList<>();
+        for (ProductModel productModel:model.getProducts()){
+            if (selectedItemModel!=null&&productModel.getId().equals(selectedItemModel.getId())){
+                productModel.setSelected(true);
+            }else {
+                productModel.setSelected(false);
+            }
+            products.add(productModel);
+        }
+        model.setProducts(products);
+
         adapter.updateList(model.getProducts());
     }
 

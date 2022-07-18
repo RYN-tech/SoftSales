@@ -55,8 +55,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         myHolder.itemView.setOnClickListener(view -> {
             if (oldHolder != null) {
-                ProductModel oldModel = list.get(oldHolder.getAdapterPosition());
-                if (oldModel.isSelected()) {
+                ProductModel oldModel= null;
+                try {
+                    oldModel = list.get(oldHolder.getAdapterPosition());
+
+                }catch (Exception e){}
+                if (oldModel!=null&&oldModel.isSelected()) {
                     oldModel.setSelected(false);
                     list.set(oldHolder.getAdapterPosition(), oldModel);
                     oldHolder.binding.setModel(oldModel);
