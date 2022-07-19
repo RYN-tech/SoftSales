@@ -45,6 +45,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class AddProductActivity extends BaseActivity {
     private ActivityAddProductBinding binding;
@@ -208,8 +209,9 @@ public class AddProductActivity extends BaseActivity {
         req = 2;
         File fileImage = createImageFile();
         if (fileImage != null) {
-            cameraUri = FileProvider.getUriForFile(this, getPackageName() + ".provider", fileImage);
+            cameraUri = FileProvider.getUriForFile(Objects.requireNonNull(getApplicationContext()), BuildConfig.APPLICATION_ID + ".provider", fileImage);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraUri);
             launcher.launch(intent);
         } else {
